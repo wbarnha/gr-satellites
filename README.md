@@ -1,3 +1,5 @@
+# This fork is intended for interfacing with gr-gmuground
+
 # gr-satellites
 GNU Radio decoders for Amateur satellites.
 
