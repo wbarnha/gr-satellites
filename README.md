@@ -1,6 +1,8 @@
-# This fork is intended for interfacing with gr-gmuground
 
 # gr-satellites
+
+NOTE: This fork is intended to interface with gr-gmuground so that satellites can be easily switched out.
+
 GNU Radio decoders for Amateur satellites.
 
 gr-satellites is a GNU Radio out-of-tree module encompassing a collection of
