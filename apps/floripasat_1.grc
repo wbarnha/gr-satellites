@@ -80,7 +80,7 @@ blocks:
     bus_structure: null
     coordinate: [788, 1380]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: blocks_multiply_const_vxx_0
   id: blocks_multiply_const_vxx
   parameters:
@@ -259,7 +259,7 @@ blocks:
     bus_structure: null
     coordinate: [512, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: ccsds_descrambler_0_0
   id: ccsds_descrambler
   parameters:
@@ -395,7 +395,7 @@ blocks:
     bus_structure: null
     coordinate: [248, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: latitude
   id: parameter
   parameters:
@@ -412,7 +412,7 @@ blocks:
     bus_structure: null
     coordinate: [512, 119]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: longitude
   id: parameter
   parameters:
@@ -429,7 +429,7 @@ blocks:
     bus_structure: null
     coordinate: [720, 119]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -558,7 +558,7 @@ blocks:
     bus_structure: null
     coordinate: [392, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: recstart
   id: parameter
   parameters:
@@ -575,7 +575,7 @@ blocks:
     bus_structure: null
     coordinate: [720, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: satellites_floripasat_telemetry_parser_0
   id: satellites_floripasat_telemetry_parser
   parameters:
@@ -670,7 +670,7 @@ blocks:
     bus_structure: null
     coordinate: [788, 1240]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: sync_to_pdu_packed_0
   id: sync_to_pdu_packed
   parameters:

@@ -168,7 +168,7 @@ blocks:
     bus_structure: null
     coordinate: [792, 912]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: callsign
   id: parameter
   parameters:
@@ -185,7 +185,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 111]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: digital_binary_slicer_fb_0
   id: digital_binary_slicer_fb
   parameters:
@@ -317,7 +317,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: latitude
   id: parameter
   parameters:
@@ -334,7 +334,7 @@ blocks:
     bus_structure: null
     coordinate: [504, 119]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: longitude
   id: parameter
   parameters:
@@ -351,7 +351,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 119]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -430,7 +430,7 @@ blocks:
     bus_structure: null
     coordinate: [384, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: recstart
   id: parameter
   parameters:
@@ -447,7 +447,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 15]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: satellites_check_address_0
   id: satellites_check_address
   parameters:
@@ -511,7 +511,7 @@ blocks:
     bus_structure: null
     coordinate: [600, 944]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: satellites_print_timestamp_0
   id: satellites_print_timestamp
   parameters:
@@ -560,7 +560,7 @@ blocks:
     bus_structure: null
     coordinate: [968, 816]
     rotation: 0
-    state: disabled
+    state: enabled
 
 connections:
 - [analog_feedforward_agc_cc_0, '0', digital_fll_band_edge_cc_0, '0']

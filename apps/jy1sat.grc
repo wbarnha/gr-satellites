@@ -445,7 +445,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 16]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: rms_agc_0
   id: rms_agc
   parameters:

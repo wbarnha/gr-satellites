@@ -126,7 +126,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 1148]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: bfo
   id: parameter
   parameters:
@@ -242,7 +242,7 @@ blocks:
     bus_structure: null
     coordinate: [239, 115]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: digital_fll_band_edge_cc_0
   id: digital_fll_band_edge_cc
   parameters:
@@ -322,7 +322,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 16]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: latitude
   id: parameter
   parameters:
@@ -339,7 +339,7 @@ blocks:
     bus_structure: null
     coordinate: [504, 120]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: longitude
   id: parameter
   parameters:
@@ -356,7 +356,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 120]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: pad_sink_0
   id: pad_sink
   parameters:
@@ -411,7 +411,7 @@ blocks:
     bus_structure: null
     coordinate: [384, 16]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: recstart
   id: parameter
   parameters:
@@ -428,7 +428,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 16]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: rms_agc_0
   id: rms_agc
   parameters:
@@ -476,7 +476,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 940]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: satellites_funcube_telemetry_parser_0
   id: satellites_funcube_telemetry_parser
   parameters:
@@ -525,7 +525,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 792]
     rotation: 0
-    state: disabled
+    state: enabled
 - name: site_id
   id: parameter
   parameters:
@@ -542,7 +542,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 1036]
     rotation: 0
-    state: disabled
+    state: enabled
 
 connections:
 - [blocks_complex_to_real_0, '0', blocks_multiply_const_vxx_0, '0']
