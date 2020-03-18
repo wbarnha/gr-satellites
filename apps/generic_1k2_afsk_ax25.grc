@@ -292,6 +292,24 @@ blocks:
     bus_structure: null
     coordinate: [1060, 411]
     rotation: 0
+    state: disabled
+- name: pad_sink_1
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out
+    num_streams: '1'
+    optional: 'False'
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [679, 489]
+    rotation: 0
     state: true
 - name: pad_source_0
   id: pad_source
@@ -363,7 +381,7 @@ blocks:
     bus_structure: null
     coordinate: [623, 403]
     rotation: 0
-    state: true
+    state: disabled
 - name: satellites_nrzi_decode_0
   id: satellites_nrzi_decode
   parameters:
@@ -440,6 +458,7 @@ connections:
 - [pad_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [satellites_hdlc_deframer_0, out, pad_sink_0, in]
 - [satellites_hdlc_deframer_0, out, satellites_print_timestamp_0, in]
+- [satellites_nrzi_decode_0, '0', pad_sink_1, '0']
 - [satellites_nrzi_decode_0, '0', satellites_hdlc_deframer_0, '0']
 - [satellites_pdu_to_kiss_0, out, blocks_socket_pdu_0, pdus]
 - [satellites_print_timestamp_0, out, blocks_message_debug_0, print_pdu]

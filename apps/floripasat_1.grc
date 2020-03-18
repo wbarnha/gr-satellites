@@ -80,7 +80,7 @@ blocks:
     bus_structure: null
     coordinate: [788, 1380]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_multiply_const_vxx_0
   id: blocks_multiply_const_vxx
   parameters:
@@ -259,7 +259,7 @@ blocks:
     bus_structure: null
     coordinate: [512, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: ccsds_descrambler_0_0
   id: ccsds_descrambler
   parameters:
@@ -395,7 +395,7 @@ blocks:
     bus_structure: null
     coordinate: [248, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: latitude
   id: parameter
   parameters:
@@ -412,7 +412,7 @@ blocks:
     bus_structure: null
     coordinate: [512, 119]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: longitude
   id: parameter
   parameters:
@@ -429,7 +429,7 @@ blocks:
     bus_structure: null
     coordinate: [720, 119]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -558,7 +558,7 @@ blocks:
     bus_structure: null
     coordinate: [392, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: recstart
   id: parameter
   parameters:
@@ -575,7 +575,7 @@ blocks:
     bus_structure: null
     coordinate: [720, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_floripasat_telemetry_parser_0
   id: satellites_floripasat_telemetry_parser
   parameters:
@@ -588,7 +588,7 @@ blocks:
     bus_structure: null
     coordinate: [790, 1171]
     rotation: 0
-    state: true
+    state: disabled
 - name: satellites_ngham_check_crc_0
   id: satellites_ngham_check_crc
   parameters:
@@ -602,7 +602,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [297, 1093]
+    coordinate: [354, 1093]
     rotation: 0
     state: true
 - name: satellites_ngham_packet_crop_0
@@ -651,7 +651,7 @@ blocks:
     bus_structure: null
     coordinate: [476, 1280]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_submit_0
   id: satellites_submit
   parameters:
@@ -670,7 +670,7 @@ blocks:
     bus_structure: null
     coordinate: [788, 1240]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: sync_to_pdu_packed_0
   id: sync_to_pdu_packed
   parameters:
