@@ -1,14 +1,14 @@
 options:
   parameters:
     author: Daniel Estevez
-    category: Custom
+    category: Satellites
     cmake_opt: ''
     comment: ''
     copyright: ''
     description: Decodes 9k6 AX.25 BPSK telemetry from 3CAT-2
     gen_cmake: 'On'
     gen_linking: dynamic
-    generate_options: no_gui
+    generate_options: hb
     hier_block_src_path: '.:'
     id: sat_3cat_2
     max_nouts: '0'
@@ -149,23 +149,6 @@ blocks:
     coordinate: [56, 656]
     rotation: 0
     state: enabled
-- name: blocks_short_to_float_0
-  id: blocks_short_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale: '32767'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [240, 308]
-    rotation: 0
-    state: enabled
 - name: blocks_socket_pdu_0
   id: blocks_socket_pdu
   parameters:
@@ -185,28 +168,7 @@ blocks:
     bus_structure: null
     coordinate: [792, 912]
     rotation: 0
-    state: enabled
-- name: blocks_udp_source_0
-  id: blocks_udp_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    eof: 'False'
-    ipaddr: ip
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    port: port
-    psize: '1472'
-    type: short
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [24, 288]
-    rotation: 0
-    state: enabled
+    state: disabled
 - name: callsign
   id: parameter
   parameters:
@@ -223,7 +185,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 111]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: digital_binary_slicer_fb_0
   id: digital_binary_slicer_fb
   parameters:
@@ -355,7 +317,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: latitude
   id: parameter
   parameters:
@@ -372,7 +334,7 @@ blocks:
     bus_structure: null
     coordinate: [504, 119]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: longitude
   id: parameter
   parameters:
@@ -389,7 +351,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 119]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: low_pass_filter_0
   id: low_pass_filter
   parameters:
@@ -414,6 +376,44 @@ blocks:
     coordinate: [280, 456]
     rotation: 0
     state: enabled
+- name: pad_sink_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [388, 914]
+    rotation: 0
+    state: true
+- name: pad_source_0
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: in
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [180, 306]
+    rotation: 0
+    state: true
 - name: port
   id: parameter
   parameters:
@@ -430,7 +430,7 @@ blocks:
     bus_structure: null
     coordinate: [384, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: recstart
   id: parameter
   parameters:
@@ -447,7 +447,7 @@ blocks:
     bus_structure: null
     coordinate: [712, 15]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_check_address_0
   id: satellites_check_address
   parameters:
@@ -470,7 +470,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    check_fcs: 'True'
+    check_fcs: 'False'
     comment: ''
     max_length: '10000'
     maxoutbuf: '0'
@@ -511,7 +511,7 @@ blocks:
     bus_structure: null
     coordinate: [600, 944]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_print_timestamp_0
   id: satellites_print_timestamp
   parameters:
@@ -560,13 +560,11 @@ blocks:
     bus_structure: null
     coordinate: [968, 816]
     rotation: 0
-    state: enabled
+    state: disabled
 
 connections:
 - [analog_feedforward_agc_cc_0, '0', digital_fll_band_edge_cc_0, '0']
 - [blocks_complex_to_real_0, '0', digital_binary_slicer_fb_0, '0']
-- [blocks_short_to_float_0, '0', freq_xlating_fir_filter_xxx_0, '0']
-- [blocks_udp_source_0, '0', blocks_short_to_float_0, '0']
 - [digital_binary_slicer_fb_0, '0', satellites_nrzi_decode_0, '0']
 - [digital_costas_loop_cc_0_0_0_0, '0', digital_lms_dd_equalizer_cc_0_0, '0']
 - [digital_fll_band_edge_cc_0, '0', low_pass_filter_0, '0']
@@ -574,6 +572,8 @@ connections:
 - [digital_pfb_clock_sync_xxx_0, '0', digital_costas_loop_cc_0_0_0_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', analog_feedforward_agc_cc_0, '0']
 - [low_pass_filter_0, '0', digital_pfb_clock_sync_xxx_0, '0']
+- [pad_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
+- [satellites_check_address_0, ok, pad_sink_0, in]
 - [satellites_check_address_0, ok, satellites_print_timestamp_0, in]
 - [satellites_hdlc_deframer_0, out, satellites_check_address_0, in]
 - [satellites_nrzi_decode_0, '0', satellites_hdlc_deframer_0, '0']

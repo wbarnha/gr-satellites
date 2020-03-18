@@ -144,24 +144,7 @@ blocks:
     bus_structure: null
     coordinate: [1032, 704]
     rotation: 0
-    state: enabled
-- name: blocks_short_to_float_0
-  id: blocks_short_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale: '32767'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [240, 308]
-    rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_socket_pdu_0
   id: blocks_socket_pdu
   parameters:
@@ -181,28 +164,7 @@ blocks:
     bus_structure: null
     coordinate: [792, 908]
     rotation: 0
-    state: enabled
-- name: blocks_udp_source_0
-  id: blocks_udp_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    eof: 'False'
-    ipaddr: ip
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    port: port
-    psize: '1472'
-    type: short
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [24, 284]
-    rotation: 0
-    state: enabled
+    state: disabled
 - name: callsign
   id: parameter
   parameters:
@@ -386,6 +348,44 @@ blocks:
     coordinate: [712, 119]
     rotation: 0
     state: enabled
+- name: pad_sink_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [319, 892]
+    rotation: 0
+    state: true
+- name: pad_source_0
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: in
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [147, 308]
+    rotation: 0
+    state: true
 - name: port
   id: parameter
   parameters:
@@ -459,7 +459,7 @@ blocks:
   parameters:
     affinity: ''
     alias: ''
-    check_fcs: 'True'
+    check_fcs: 'False'
     comment: ''
     max_length: '10000'
     maxoutbuf: '0'
@@ -500,7 +500,7 @@ blocks:
     bus_structure: null
     coordinate: [600, 944]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_print_timestamp_0
   id: satellites_print_timestamp
   parameters:
@@ -517,7 +517,7 @@ blocks:
     bus_structure: null
     coordinate: [288, 764]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_submit_0
   id: satellites_submit
   parameters:
@@ -536,19 +536,19 @@ blocks:
     bus_structure: null
     coordinate: [968, 816]
     rotation: 0
-    state: enabled
+    state: disabled
 
 connections:
 - [blocks_complex_to_real_0, '0', digital_binary_slicer_fb_0, '0']
-- [blocks_short_to_float_0, '0', freq_xlating_fir_filter_xxx_0_0, '0']
-- [blocks_udp_source_0, '0', blocks_short_to_float_0, '0']
 - [digital_binary_slicer_fb_0, '0', satellites_nrzi_decode_0, '0']
 - [digital_costas_loop_cc_0_0_0_0, '0', digital_lms_dd_equalizer_cc_0_0, '0']
 - [digital_fll_band_edge_cc_0, '0', digital_pfb_clock_sync_xxx_0, '0']
 - [digital_lms_dd_equalizer_cc_0_0, '0', blocks_complex_to_real_0, '0']
 - [digital_pfb_clock_sync_xxx_0, '0', digital_costas_loop_cc_0_0_0_0, '0']
 - [freq_xlating_fir_filter_xxx_0_0, '0', rms_agc_0, '0']
+- [pad_source_0, '0', freq_xlating_fir_filter_xxx_0_0, '0']
 - [rms_agc_0, '0', digital_fll_band_edge_cc_0, '0']
+- [satellites_check_address_0, ok, pad_sink_0, in]
 - [satellites_check_address_0, ok, satellites_print_timestamp_0, in]
 - [satellites_hdlc_deframer_0, out, satellites_check_address_0, in]
 - [satellites_nrzi_decode_0, '0', satellites_hdlc_deframer_0, '0']

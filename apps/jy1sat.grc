@@ -1,14 +1,14 @@
 options:
   parameters:
     author: Daniel Estevez
-    category: Custom
+    category: Satellites
     cmake_opt: ''
     comment: ''
     copyright: ''
     description: JY1-Sat decoder
     gen_cmake: 'On'
     gen_linking: dynamic
-    generate_options: no_gui
+    generate_options: hb
     hier_block_src_path: '.:'
     id: jy1sat
     max_nouts: '0'
@@ -108,7 +108,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 1148]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: bfo
   id: parameter
   parameters:
@@ -178,7 +178,7 @@ blocks:
     bus_structure: null
     coordinate: [968, 1268]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_message_debug_0
   id: blocks_message_debug
   parameters:
@@ -242,45 +242,7 @@ blocks:
     bus_structure: null
     coordinate: [736, 1284]
     rotation: 0
-    state: enabled
-- name: blocks_short_to_float_0
-  id: blocks_short_to_float
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    scale: '32767'
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [232, 292]
-    rotation: 0
-    state: enabled
-- name: blocks_udp_source_0
-  id: blocks_udp_source
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    eof: 'False'
-    ipaddr: ip
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    port: port
-    psize: '1472'
-    type: short
-    vlen: '1'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [16, 268]
-    rotation: 0
-    state: enabled
+    state: disabled
 - name: callsign
   id: parameter
   parameters:
@@ -297,7 +259,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 112]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: digital_fll_band_edge_cc_0
   id: digital_fll_band_edge_cc
   parameters:
@@ -377,7 +339,7 @@ blocks:
     bus_structure: null
     coordinate: [240, 16]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: latitude
   id: parameter
   parameters:
@@ -394,7 +356,7 @@ blocks:
     bus_structure: null
     coordinate: [504, 120]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: longitude
   id: parameter
   parameters:
@@ -411,7 +373,45 @@ blocks:
     bus_structure: null
     coordinate: [712, 120]
     rotation: 0
-    state: enabled
+    state: disabled
+- name: pad_sink_0
+  id: pad_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: out
+    num_streams: '1'
+    optional: 'False'
+    type: message
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [411, 883]
+    rotation: 0
+    state: true
+- name: pad_source_0
+  id: pad_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    label: in
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_streams: '1'
+    optional: 'False'
+    type: float
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [160, 294]
+    rotation: 0
+    state: true
 - name: port
   id: parameter
   parameters:
@@ -428,7 +428,7 @@ blocks:
     bus_structure: null
     coordinate: [384, 16]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: recstart
   id: parameter
   parameters:
@@ -493,7 +493,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 940]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: satellites_funcube_telemetry_parser_0
   id: satellites_funcube_telemetry_parser
   parameters:
@@ -542,7 +542,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 792]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: site_id
   id: parameter
   parameters:
@@ -559,7 +559,7 @@ blocks:
     bus_structure: null
     coordinate: [936, 1036]
     rotation: 0
-    state: enabled
+    state: disabled
 
 connections:
 - [blocks_complex_to_real_0, '0', blocks_multiply_const_vxx_0, '0']
@@ -567,13 +567,13 @@ connections:
 - [blocks_multiply_conjugate_cc_0, '0', blocks_complex_to_real_0, '0']
 - [blocks_multiply_const_vxx_0, '0', satellites_ao40_fec_decoder_soft_0, '0']
 - [blocks_pdu_to_tagged_stream_0, '0', blocks_file_sink_0, '0']
-- [blocks_short_to_float_0, '0', freq_xlating_fir_filter_xxx_0, '0']
-- [blocks_udp_source_0, '0', blocks_short_to_float_0, '0']
 - [digital_fll_band_edge_cc_0, '0', digital_pfb_clock_sync_xxx_0, '0']
 - [digital_pfb_clock_sync_xxx_0, '0', blocks_delay_0, '0']
 - [digital_pfb_clock_sync_xxx_0, '0', blocks_multiply_conjugate_cc_0, '0']
 - [freq_xlating_fir_filter_xxx_0, '0', rms_agc_0, '0']
+- [pad_source_0, '0', freq_xlating_fir_filter_xxx_0, '0']
 - [rms_agc_0, '0', digital_fll_band_edge_cc_0, '0']
+- [satellites_ao40_fec_decoder_soft_0, out, pad_sink_0, in]
 - [satellites_ao40_fec_decoder_soft_0, out, satellites_funcube_submit_0, in]
 - [satellites_ao40_fec_decoder_soft_0, out, satellites_print_timestamp_0, in]
 - [satellites_ao40_fec_decoder_soft_0, out, satellites_submit_0, in]
